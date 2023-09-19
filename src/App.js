@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import AppBar from "./Components/AppBar";
+import LandingPage from "./Components/LandingPage";
+import SignUp from "./Components/SignUp";
+import LogIn from "./Components/LogIn";
 
-function App() {
+export default function App() {
+  const [reg, setReg] = useState(false);
+  const [sign, setSign] = useState(false);
+  const [show, setShow] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <AppBar setReg={setReg} show={show} setShow={setShow} setSign={setSign} />
+      <LandingPage />
+      <SignUp show={reg} onHide={setReg} setSign={setSign} />
+      <LogIn show={sign} onHide={setSign} setReg={setReg} />
     </div>
   );
 }
-
-export default App;
